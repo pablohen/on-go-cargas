@@ -3,7 +3,7 @@ import { CEP } from '../interfaces/CEP';
 import brasilApiService from '../services/brasilApiService';
 
 const useCEP = (cep: number) => {
-  const [dados, setDados] = useState({});
+  const [dados, setDados] = useState<CEP>();
 
   useEffect(() => {
     if (cep) {
