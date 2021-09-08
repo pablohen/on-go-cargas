@@ -1,4 +1,4 @@
-export interface Terminal {
+export interface AtualizacaoTerminal {
   Id: number;
   idDonoCarga: number;
   nome: string;
