@@ -69,8 +69,8 @@ const TerminalPage = (props: Props) => {
               lng: terminal.endereco.lng,
             }}
             onSubmit={function (
-              values: Values,
-              formikHelpers: FormikHelpers<Values>
+              values: any,
+              formikHelpers: FormikHelpers<any>
             ): void | Promise<any> {
               const dadosTerminal: any = {
                 Id: values.id,
