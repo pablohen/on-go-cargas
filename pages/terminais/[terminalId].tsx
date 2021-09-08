@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import useDetalhesTerminal from './../../hooks/useDetalhesTerminal';
-import { TextField } from '@material-ui/core';
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+} from '@material-ui/core';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import OnGoBackground from '../../components/OnGoBackground';
 import OnGoContainer from '../../components/OnGoContainer';
-import { Formik, FormikHelpers, useFormik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import useCEP from './../../hooks/useCEP';
-import { Terminal } from '../../interfaces/Terminal';
+import { AtualizacaoTerminal } from '../../interfaces/AtualizacaoTerminal';
 
 interface Props {}
 
 const TerminalPage = (props: Props) => {
   const router = useRouter();
   const { terminalId } = router.query || {};
-  const [CEP, setCEP] = useState(13484171);
+  const [CEP, setCEP] = useState(0);
   const [dadosCEP] = useCEP(CEP);
 
   useEffect(() => {
@@ -46,7 +53,7 @@ const TerminalPage = (props: Props) => {
   return (
     <OnGoBackground>
       {loadingTerminal ? (
-        <div>Carregando</div>
+        <OnGoContainer>Carregando...</OnGoContainer>
       ) : (
         <div className="p-4 space-y-4">
           <Formik
@@ -54,7 +61,7 @@ const TerminalPage = (props: Props) => {
               id: terminal.id,
               nome: terminal.nome,
               inscricaoEstadual: terminal.inscricaoEstadual,
-              tipoPessoa: terminal.tipoPessoa,
+              tipoPessoa: String(terminal.tipoPessoa),
               cpf: terminal.cpf,
               cnpj: terminal.cnpj,
               cep: terminal.endereco.cep,
@@ -72,11 +79,11 @@ const TerminalPage = (props: Props) => {
               values: any,
               formikHelpers: FormikHelpers<any>
             ): void | Promise<any> {
-              const dadosTerminal: any = {
+              const dadosTerminal: AtualizacaoTerminal = {
                 Id: values.id,
                 idDonoCarga: 1,
                 nome: values.nome,
-                TipoPessoa: values.tipoPessoa,
+                TipoPessoa: Number(values.tipoPessoa),
                 CPF: values.cpf,
                 CNPJ: values.cnpj,
                 InscricaoEstadual: values.inscricaoEstadual,
@@ -95,7 +102,7 @@ const TerminalPage = (props: Props) => {
                   nomeEstado: values.nomeEstado,
                 },
               };
-              console.log(dadosTerminal);
+              console.table(dadosTerminal);
               throw new Error('Function not implemented.');
             }}
           >
@@ -130,33 +137,51 @@ const TerminalPage = (props: Props) => {
                     onBlur={handleBlur}
                     className="w-full"
                   />
-                  <TextField
-                    variant="outlined"
-                    label="Tipo pessoa"
-                    name="tipoPessoa"
-                    value={values.tipoPessoa}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="w-full"
-                  />
-                  <TextField
-                    variant="outlined"
-                    label="CPF"
-                    name="cpf"
-                    value={values.cpf}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="w-full"
-                  />
-                  <TextField
-                    variant="outlined"
-                    label="CNPJ"
-                    name="cnpj"
-                    value={values.cnpj}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className="w-full"
-                  />
+                  <FormControl component="fieldset">
+                    <FormLabel component="legend">Tipo de pessoa</FormLabel>
+                    <RadioGroup
+                      aria-label="tipo de pessoa"
+                      name="tipoPessoa"
+                      value={values.tipoPessoa}
+                      onChange={handleChange}
+                      row
+                    >
+                      <FormControlLabel
+                        value="1"
+                        control={<Radio />}
+                        label="Pessoa física"
+                      />
+                      <FormControlLabel
+                        value="2"
+                        control={<Radio />}
+                        label="Pessoa jurídica"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+
+                  {values.tipoPessoa === '1' && (
+                    <TextField
+                      variant="outlined"
+                      label="CPF"
+                      name="cpf"
+                      value={values.cpf}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className="w-full"
+                    />
+                  )}
+
+                  {values.tipoPessoa === '2' && (
+                    <TextField
+                      variant="outlined"
+                      label="CNPJ"
+                      name="cnpj"
+                      value={values.cnpj}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className="w-full"
+                    />
+                  )}
                 </OnGoContainer>
                 <OnGoContainer>
                   <p className="text-lg font-bold">Endereço</p>
@@ -166,16 +191,20 @@ const TerminalPage = (props: Props) => {
                     name="cep"
                     value={values.cep}
                     onChange={handleChange}
-                    onBlur={handleBlur}
+                    onBlur={(e: any) => {
+                      handleBlur;
+                      setCEP(values.cep);
+                    }}
                     className="w-full"
                   />
                   <TextField
                     variant="outlined"
                     label="Logradouro"
                     name="logradouro"
-                    value={values.logradouro}
+                    value={dadosCEP?.street || values.logradouro}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    disabled
                     className="w-full"
                   />
                   <TextField
@@ -191,9 +220,10 @@ const TerminalPage = (props: Props) => {
                     variant="outlined"
                     label="Bairro"
                     name="bairro"
-                    value={values.bairro}
+                    value={dadosCEP?.neighborhood || values.bairro}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    disabled
                     className="w-full"
                   />
                   <TextField
@@ -209,9 +239,10 @@ const TerminalPage = (props: Props) => {
                     variant="outlined"
                     label="Cidade"
                     name="cidade"
-                    value={values.cidade}
+                    value={dadosCEP?.city || values.cidade}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    disabled
                     className="w-full"
                   />
                   <TextField
@@ -227,9 +258,10 @@ const TerminalPage = (props: Props) => {
                     variant="outlined"
                     label="Estado"
                     name="estado"
-                    value={values.estado}
+                    value={dadosCEP?.state || values.estado}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    disabled
                     className="w-full"
                   />
                   <input
@@ -253,7 +285,11 @@ const TerminalPage = (props: Props) => {
                       <TextField
                         variant="outlined"
                         label="Latitude"
-                        value={values.lat}
+                        value={
+                          dadosCEP?.location?.coordinates?.latitude ||
+                          values.lat ||
+                          0
+                        }
                         onChange={handleChange}
                         onBlur={handleBlur}
                         disabled
@@ -262,7 +298,11 @@ const TerminalPage = (props: Props) => {
                       <TextField
                         variant="outlined"
                         label="Longitude"
-                        value={values.lng}
+                        value={
+                          dadosCEP?.location?.coordinates?.longitude ||
+                          values.lng ||
+                          0
+                        }
                         onChange={handleChange}
                         onBlur={handleBlur}
                         disabled
