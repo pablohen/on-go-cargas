@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import AuthGuard from './../components/AuthGuard';
 import { DataGrid } from '@material-ui/data-grid';
 import onGoCargasService from '../services/onGoCargasService';
-import { Terminal } from '../interfaces/Terminal';
+import { AtualizacaoTerminal } from '../interfaces/AtualizacaoTerminal';
 import { useRouter } from 'next/router';
 import OnGoContainer from './../components/OnGoContainer';
 import OnGoBackground from './../components/OnGoBackground';
@@ -13,7 +13,7 @@ interface Props {}
 
 const TerminaisPage = (props: Props) => {
   const token = useSelector((state: any) => state.user.accessToken);
-  const [terminais, setTerminais] = useState<Terminal[]>([]);
+  const [terminais, setTerminais] = useState<AtualizacaoTerminal[]>([]);
   const [pesquisa, setPesquisa] = useState<string>('');
   const router = useRouter();
 
@@ -22,7 +22,7 @@ const TerminaisPage = (props: Props) => {
       const res: any = await onGoCargasService.getTerminais(token, pesquisa);
       console.log(res);
       setTerminais(
-        res.data.data.data.map((terminal: any) => {
+        res?.data?.data?.data.map((terminal: any) => {
           const { id, nome, endereco } = terminal;
           const { cidade, nomeEstado } = endereco || {};
 
