@@ -25,9 +25,14 @@ const TerminalPage = (props: Props) => {
   const [dadosCEP] = useCEP(CEP);
 
   const [terminal, loadingTerminal] = useDetalhesTerminal(Number(terminalId));
+
   const center = {
-    lat: Number(terminal?.endereco?.lat),
-    lng: Number(terminal?.endereco?.lng),
+    lat: Number(
+      dadosCEP?.location?.coordinates?.latitude || terminal?.endereco?.lat || 0
+    ),
+    lng: Number(
+      dadosCEP?.location?.coordinates?.longitude || terminal?.endereco?.lng || 0
+    ),
   };
 
   const { isLoaded } = useJsApiLoader({
@@ -280,7 +285,7 @@ const TerminalPage = (props: Props) => {
                     <GoogleMap
                       mapContainerStyle={containerStyle}
                       center={center}
-                      zoom={10}
+                      zoom={14}
                     >
                       <Marker position={center} />
                     </GoogleMap>
