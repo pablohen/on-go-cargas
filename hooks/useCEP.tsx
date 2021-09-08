@@ -6,7 +6,7 @@ const useCEP = (cep: number) => {
   const [dados, setDados] = useState<CEP>();
 
   useEffect(() => {
-    if (cep) {
+    if (cep && cep !== 0) {
       const getCEP = async () => {
         const res: any = await brasilApiService.getCEP(cep);
         const dadosCep: CEP = res.data;

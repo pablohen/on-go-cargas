@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import onGoCargasService from '../../services/onGoCargasService';
+import onGoCargasService from '../services/onGoCargasService';
 
 const initialState = {
   accessToken: null,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../features/user/userSlice';
+import { login } from '../store/userSlice';
 import onGoCargasService from '../services/onGoCargasService';
 import { useRouter } from 'next/router';
 import OnGoContainer from '../components/OnGoContainer';

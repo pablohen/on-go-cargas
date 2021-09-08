@@ -21,12 +21,8 @@ interface Props {}
 const TerminalPage = (props: Props) => {
   const router = useRouter();
   const { terminalId } = router.query || {};
-  const [CEP, setCEP] = useState(0);
+  const [CEP, setCEP] = useState<number>(0);
   const [dadosCEP] = useCEP(CEP);
-
-  useEffect(() => {
-    console.log(dadosCEP);
-  }, [dadosCEP]);
 
   const [terminal, loadingTerminal] = useDetalhesTerminal(Number(terminalId));
   const center = {
@@ -185,18 +181,26 @@ const TerminalPage = (props: Props) => {
                 </OnGoContainer>
                 <OnGoContainer>
                   <p className="text-lg font-bold">Endereço</p>
-                  <TextField
-                    variant="outlined"
-                    label="CEP"
-                    name="cep"
-                    value={values.cep}
-                    onChange={handleChange}
-                    onBlur={(e: any) => {
-                      handleBlur;
-                      setCEP(values.cep);
-                    }}
-                    className="w-full"
-                  />
+                  <div className="flex space-x-4">
+                    <TextField
+                      variant="outlined"
+                      label="CEP"
+                      name="cep"
+                      value={values.cep}
+                      onChange={handleChange}
+                      onBlur={(e: any) => {
+                        handleBlur;
+                        setCEP(values.cep);
+                      }}
+                      className="w-full"
+                    />
+                    {/* <button
+                      className="rounded w-96 py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg"
+                      onClick={() => setCEP(values.cep)}
+                    >
+                      Buscar CEP
+                    </button> */}
+                  </div>
                   <TextField
                     variant="outlined"
                     label="Logradouro"

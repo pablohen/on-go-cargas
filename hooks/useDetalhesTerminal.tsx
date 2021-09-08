@@ -9,17 +9,19 @@ const useDetalhesTerminal = (id: number): [DetalhesTerminal, Boolean] => {
   const accessToken = useSelector((state: any) => state.user.accessToken);
 
   useEffect(() => {
-    const getDetalhes = async () => {
-      const res: any = await onGoCargasService.getDetalhesTerminal(
-        accessToken,
-        id
-      );
-      const detalhes: DetalhesTerminal = await res.data.data;
-      setTerminal(detalhes);
-      setLoading(false);
-    };
+    if (id) {
+      const getDetalhes = async () => {
+        const res: any = await onGoCargasService.getDetalhesTerminal(
+          accessToken,
+          id
+        );
+        const detalhes: DetalhesTerminal = await res?.data?.data;
+        setTerminal(detalhes);
+        setLoading(false);
+      };
 
-    getDetalhes();
+      getDetalhes();
+    }
   }, [accessToken, id]);
 
   return [terminal, loading];
