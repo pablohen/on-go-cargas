@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import OnGoContainer from './../components/OnGoContainer';
 import OnGoBackground from './../components/OnGoBackground';
 import { TextField } from '@material-ui/core';
+import MainMenu from '../components/MainMenu';
 
 interface Props {}
 
@@ -76,23 +77,29 @@ const TerminaisPage = (props: Props) => {
 
   return (
     <OnGoBackground>
-      <OnGoContainer>
-        <p className="text-lg font-bold">Terminais</p>
-        <TextField
-          label="Pesquisar"
-          variant="outlined"
-          value={pesquisa}
-          onChange={(e) => setPesquisa(e.currentTarget.value)}
-        />
-        <div className="w-full h-96">
-          <DataGrid
-            columns={columns}
-            rows={terminais}
-            pageSize={10}
-            onRowClick={(item) => router.push(`terminais/${item.id}`)}
-          />
+      <div className="space-y-4">
+        <MainMenu />
+
+        <div className="px-4">
+          <OnGoContainer>
+            <p className="text-lg font-bold">Terminais</p>
+            <TextField
+              label="Pesquisar"
+              variant="outlined"
+              value={pesquisa}
+              onChange={(e) => setPesquisa(e.currentTarget.value)}
+            />
+            <div className="w-full h-96">
+              <DataGrid
+                columns={columns}
+                rows={terminais}
+                pageSize={10}
+                onRowClick={(item) => router.push(`terminais/${item.id}`)}
+              />
+            </div>
+          </OnGoContainer>
         </div>
-      </OnGoContainer>
+      </div>
     </OnGoBackground>
   );
 };
