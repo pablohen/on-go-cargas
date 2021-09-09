@@ -5,6 +5,7 @@ import onGoCargasService from '../services/onGoCargasService';
 import { useRouter } from 'next/router';
 import OnGoContainer from '../components/OnGoContainer';
 import OnGoBackground from './../components/OnGoBackground';
+import { LoginIcon } from '@heroicons/react/outline';
 
 interface Props {}
 
@@ -50,9 +51,10 @@ const LoginPage = (props: Props) => {
                 defaultValue={password}
               />
               <button
-                className="rounded w-full py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg hover:scale-105"
+                className="flex justify-center items-center rounded w-full py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg"
                 type="submit"
               >
+                <LoginIcon className="h-6 mr-2" />
                 Login
               </button>
             </form>

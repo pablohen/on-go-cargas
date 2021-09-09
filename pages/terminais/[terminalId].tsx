@@ -66,7 +66,7 @@ const TerminalPage = (props: Props) => {
             </div>
           </div>
         ) : (
-          <div className="px-4 space-y-4">
+          <div className="px-4 pb-4 space-y-4">
             <Formik
               initialValues={{
                 id: terminal.id,
@@ -285,7 +285,7 @@ const TerminalPage = (props: Props) => {
                     />
                     <input
                       type="submit"
-                      className="rounded w-full py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg hover:scale-105"
+                      className="rounded w-full py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg"
                       value="Enviar"
                       disabled={isSubmitting}
                     />
