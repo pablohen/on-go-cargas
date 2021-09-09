@@ -17,6 +17,8 @@ import useCEP from './../../hooks/useCEP';
 import { AtualizacaoTerminal } from '../../interfaces/AtualizacaoTerminal';
 import CustomLoader from '../../components/CustomLoader';
 import MainMenu from '../../components/MainMenu';
+import onGoCargasService from '../../services/onGoCargasService';
+import { useSelector } from 'react-redux';
 
 interface Props {}
 
@@ -27,6 +29,7 @@ const TerminalPage = (props: Props) => {
   const [dadosCEP] = useCEP(CEP);
 
   const [terminal, loadingTerminal] = useDetalhesTerminal(Number(terminalId));
+  const accessToken = useSelector((state: any) => state.user.accessToken);
 
   const center = {
     lat: Number(
@@ -47,11 +50,12 @@ const TerminalPage = (props: Props) => {
     height: '400px',
   };
 
-  useEffect(() => {
-    if (loadingTerminal === false) {
-      console.log(terminal);
-    }
-  }, [loadingTerminal, terminal]);
+  const handleSubmit = async (
+    accessToken: string,
+    dadosTerminal: AtualizacaoTerminal
+  ) => {
+    await onGoCargasService.updateTerminal(accessToken, dadosTerminal);
+  };
 
   return (
     <OnGoBackground>
@@ -114,7 +118,15 @@ const TerminalPage = (props: Props) => {
                   },
                 };
                 console.table(dadosTerminal);
-                throw new Error('Function not implemented.');
+                // try {
+                //   onGoCargasService
+                //     .updateTerminal(accessToken, dadosTerminal)
+                //     .then((res) => console.log(res))
+                //     .catch((error) => console.log(error));
+                // } catch (error) {
+                //   console.log(error);
+                // }
+                handleSubmit(accessToken, dadosTerminal);
               }}
             >
               {({
