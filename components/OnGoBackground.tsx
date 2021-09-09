@@ -7,7 +7,7 @@ interface Props {
 const OnGoBackground = ({ children }: Props) => {
   return (
     <div
-      className="flex flex-col justify-center items-center min-h-screen px-4"
+      className="flex flex-col min-h-screen w-full"
       style={{
         background: 'url(/default-bg.jpg) center center/cover no-repeat',
       }}
