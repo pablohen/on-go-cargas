@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { persistStore } from 'redux-persist';
+
 const persistConfig = {
   key: 'root',
   version: 1,
