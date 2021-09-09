@@ -22,8 +22,8 @@ const TerminaisPage = (props: Props) => {
       const res: any = await onGoCargasService.getTerminais(token, pesquisa);
       console.log(res);
       setTerminais(
-        res?.data?.data?.data.map((terminal: any) => {
-          const { id, nome, endereco } = terminal;
+        res?.data?.data?.data?.map((terminal: any) => {
+          const { id, nome, endereco } = terminal || {};
           const { cidade, nomeEstado } = endereco || {};
 
           return { id, nome, cidade, nomeEstado };
@@ -71,7 +71,7 @@ const TerminaisPage = (props: Props) => {
             <div className="w-full h-96">
               <DataGrid
                 columns={columns}
-                rows={terminais}
+                rows={terminais || []}
                 pageSize={10}
                 onRowClick={(item) => router.push(`terminais/${item.id}`)}
               />
