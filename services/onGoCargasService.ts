@@ -71,15 +71,18 @@ const createTerminal = async (
   token: string,
   dadosTerminal: AtualizacaoTerminal
 ) => {
-  let res = {};
+  let res: any = {};
 
   try {
-    res = await api.post('/v1/api/Terminal/save-terminal', dadosTerminal, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Ocp-Apim-Subscription-Key': process.env.NEXT_PUBLIC_SUBSCRIPTION_KEY,
-      },
-    });
+    res = await api
+      .post('/v1/api/Terminal/save-terminal', dadosTerminal, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Ocp-Apim-Subscription-Key': process.env.NEXT_PUBLIC_SUBSCRIPTION_KEY,
+        },
+      })
+      .catch((error) => error.toJSON());
+    console.log(res);
   } catch (error) {
     console.log(error);
   } finally {
@@ -101,11 +104,11 @@ const updateTerminal = async (
         'Ocp-Apim-Subscription-Key': process.env.NEXT_PUBLIC_SUBSCRIPTION_KEY,
       },
     });
-    if (res.status === 200)
-      alert(`Terminal ${dadosTerminal.nome} alterado com sucesso`);
+    // if (res.status === 200)
+    //   alert(`Terminal ${dadosTerminal.nome} alterado com sucesso`);
   } catch (error) {
     console.log(error);
-    alert('Ocorreu um erro');
+    // alert('Ocorreu um erro');
   } finally {
     return res;
   }
