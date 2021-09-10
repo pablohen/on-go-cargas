@@ -5,7 +5,7 @@ export interface AtualizacaoTerminal {
   TipoPessoa: number;
   CPF: string | null;
   CNPJ: string;
-  InscricaoEstadual: string | null;
+  InscricaoEstadual: number | null;
   Endereco: {
     id: number;
     logradouro: string;
@@ -14,8 +14,8 @@ export interface AtualizacaoTerminal {
     numero: string;
     CodCidadeIBGE: number;
     complemento: string;
-    lat: string;
-    lng: string;
+    lat: number;
+    lng: number;
     cidade: string;
     estado: string;
     nomeEstado: string;
