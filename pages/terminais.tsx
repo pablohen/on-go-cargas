@@ -67,6 +67,7 @@ const TerminaisPage = (props: Props) => {
               variant="outlined"
               value={pesquisa}
               onChange={(e) => setPesquisa(e.currentTarget.value)}
+              className="focus-within:bg-white focus-within:shadow-lg rounded"
             />
             <div className="w-full h-96">
               <DataGrid
@@ -74,6 +75,7 @@ const TerminaisPage = (props: Props) => {
                 rows={terminais || []}
                 pageSize={10}
                 onRowClick={(item) => router.push(`terminais/${item.id}`)}
+                className="bg-white rounded"
               />
             </div>
           </OnGoContainer>

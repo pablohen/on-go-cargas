@@ -144,7 +144,7 @@ const NovoTerminalPage = (props: Props) => {
                     value={values.nome}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <TextField
                     variant="outlined"
@@ -153,7 +153,7 @@ const NovoTerminalPage = (props: Props) => {
                     value={values.inscricaoEstadual}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <FormControl component="fieldset">
                     <FormLabel component="legend">Tipo de pessoa</FormLabel>
@@ -185,7 +185,7 @@ const NovoTerminalPage = (props: Props) => {
                       value={values.cpf}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                   )}
 
@@ -197,7 +197,7 @@ const NovoTerminalPage = (props: Props) => {
                       value={values.cnpj}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                   )}
                 </OnGoContainer>
@@ -214,7 +214,7 @@ const NovoTerminalPage = (props: Props) => {
                         handleBlur;
                         setCEP(values.cep);
                       }}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                   </div>
                   <TextField
@@ -225,7 +225,7 @@ const NovoTerminalPage = (props: Props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <TextField
                     variant="outlined"
@@ -234,7 +234,7 @@ const NovoTerminalPage = (props: Props) => {
                     value={values.numero}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <TextField
                     variant="outlined"
@@ -244,7 +244,7 @@ const NovoTerminalPage = (props: Props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <TextField
                     variant="outlined"
@@ -253,7 +253,7 @@ const NovoTerminalPage = (props: Props) => {
                     value={values.complemento}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <TextField
                     variant="outlined"
@@ -263,7 +263,7 @@ const NovoTerminalPage = (props: Props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <TextField
                     variant="outlined"
@@ -272,7 +272,7 @@ const NovoTerminalPage = (props: Props) => {
                     value={values.codCidadeIBGE}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <TextField
                     variant="outlined"
@@ -282,7 +282,7 @@ const NovoTerminalPage = (props: Props) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     disabled
-                    className="w-full"
+                    className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                   />
                   <input
                     type="submit"

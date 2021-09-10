@@ -159,7 +159,7 @@ const TerminalPage = (props: Props) => {
                       value={values.nome}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <TextField
                       variant="outlined"
@@ -168,7 +168,7 @@ const TerminalPage = (props: Props) => {
                       value={values.inscricaoEstadual}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <FormControl component="fieldset">
                       <FormLabel component="legend">Tipo de pessoa</FormLabel>
@@ -200,7 +200,7 @@ const TerminalPage = (props: Props) => {
                         value={values.cpf}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className="w-full"
+                        className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                       />
                     )}
 
@@ -212,7 +212,7 @@ const TerminalPage = (props: Props) => {
                         value={values.cnpj}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        className="w-full"
+                        className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                       />
                     )}
                   </OnGoContainer>
@@ -229,14 +229,8 @@ const TerminalPage = (props: Props) => {
                           handleBlur;
                           setCEP(values.cep);
                         }}
-                        className="w-full"
+                        className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                       />
-                      {/* <button
-                      className="rounded w-96 py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg"
-                      onClick={() => setCEP(values.cep)}
-                    >
-                      Buscar CEP
-                    </button> */}
                     </div>
                     <TextField
                       variant="outlined"
@@ -246,7 +240,7 @@ const TerminalPage = (props: Props) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       disabled
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <TextField
                       variant="outlined"
@@ -255,7 +249,7 @@ const TerminalPage = (props: Props) => {
                       value={values.numero}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <TextField
                       variant="outlined"
@@ -265,7 +259,7 @@ const TerminalPage = (props: Props) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       disabled
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <TextField
                       variant="outlined"
@@ -274,7 +268,7 @@ const TerminalPage = (props: Props) => {
                       value={values.complemento}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <TextField
                       variant="outlined"
@@ -284,7 +278,7 @@ const TerminalPage = (props: Props) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       disabled
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <TextField
                       variant="outlined"
@@ -293,7 +287,7 @@ const TerminalPage = (props: Props) => {
                       value={values.codCidadeIBGE}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <TextField
                       variant="outlined"
@@ -303,7 +297,7 @@ const TerminalPage = (props: Props) => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       disabled
-                      className="w-full"
+                      className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                     />
                     <input
                       type="submit"
@@ -338,7 +332,7 @@ const TerminalPage = (props: Props) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           disabled
-                          className="w-full"
+                          className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                         />
                         <TextField
                           variant="outlined"
@@ -351,7 +345,7 @@ const TerminalPage = (props: Props) => {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           disabled
-                          className="w-full"
+                          className="w-full focus-within:bg-white focus-within:shadow-lg rounded"
                         />
                       </div>
                     </OnGoContainer>
