@@ -307,7 +307,10 @@ const TerminalPage = (props: Props) => {
                     />
                     <input
                       type="submit"
-                      className="rounded w-full py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg"
+                      className={`rounded w-full py-2 bg-yellow-400 font-bold shadow transform transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg ${
+                        isSubmitting &&
+                        'bg-gray-400 hover:bg-gray-400 text-gray-600'
+                      }`}
                       value="Enviar"
                       disabled={isSubmitting}
                     />
