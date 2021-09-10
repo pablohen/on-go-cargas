@@ -21,7 +21,7 @@
 
 - [API de homologação](https://documenter.getpostman.com/view/3812853/TzK15ZxU)
 
-### TODO
+### TODO:
 
 - Máscaras nos campos;
 - Melhorar tratamento de erros com base nas respostas da API;
