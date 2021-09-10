@@ -23,6 +23,6 @@
 
 ### TODO:
 
-- Máscaras nos campos;
-- Melhorar tratamento de erros com base nas respostas da API;
-- Tema escuro;
+- Máscaras nos campos
+- Melhorar tratamento de erros com base nas respostas da API
+- Tema escuro
