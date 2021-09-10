@@ -41,16 +41,16 @@ const TerminaisPage = (props: Props) => {
   }, [terminais]);
 
   const columns = [
-    { field: 'nome', headerName: 'Terminal' },
+    { field: 'nome', headerName: 'Terminal', flex: 1 },
     {
       field: 'cidade',
       headerName: 'Cidade',
-      editable: true,
+      flex: 1,
     },
     {
       field: 'nomeEstado',
       headerName: 'Estado',
-      editable: true,
+      flex: 1,
     },
   ];
 
