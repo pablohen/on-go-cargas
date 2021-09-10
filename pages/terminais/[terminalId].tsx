@@ -19,6 +19,7 @@ import CustomLoader from '../../components/CustomLoader';
 import MainMenu from '../../components/MainMenu';
 import onGoCargasService from '../../services/onGoCargasService';
 import { useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface Props {}
 
@@ -54,7 +55,24 @@ const TerminalPage = (props: Props) => {
     accessToken: string,
     dadosTerminal: AtualizacaoTerminal
   ) => {
-    await onGoCargasService.updateTerminal(accessToken, dadosTerminal);
+    const res = await onGoCargasService.updateTerminal(
+      accessToken,
+      dadosTerminal
+    );
+    console.log(res.status);
+
+    if (res.status === 200) {
+      toast.success(`Terminal ${dadosTerminal.nome} alterado com sucesso`, {
+        position: 'bottom-center',
+      });
+    } else {
+      toast.error(
+        'Ocorreu um erro ao enviar. Verifique as informações e tente novamente.',
+        {
+          position: 'bottom-center',
+        }
+      );
+    }
   };
 
   return (
@@ -117,15 +135,7 @@ const TerminalPage = (props: Props) => {
                     nomeEstado: values.nomeEstado,
                   },
                 };
-                console.table(dadosTerminal);
-                // try {
-                //   onGoCargasService
-                //     .updateTerminal(accessToken, dadosTerminal)
-                //     .then((res) => console.log(res))
-                //     .catch((error) => console.log(error));
-                // } catch (error) {
-                //   console.log(error);
-                // }
+
                 handleSubmit(accessToken, dadosTerminal);
               }}
             >
@@ -144,7 +154,7 @@ const TerminalPage = (props: Props) => {
 
                     <TextField
                       variant="outlined"
-                      label="Nome do Terminal"
+                      label="Nome do terminal"
                       name="nome"
                       value={values.nome}
                       onChange={handleChange}
@@ -301,6 +311,7 @@ const TerminalPage = (props: Props) => {
                       value="Enviar"
                       disabled={isSubmitting}
                     />
+                    <Toaster />
                   </OnGoContainer>
                   {isLoaded && (
                     <OnGoContainer>
